@@ -1,0 +1,83 @@
+.studios-by-location {
+    .studio-item {
+        position: relative;
+        background-color: #000;
+        display: block;
+        @include border-radius(6px);
+        overflow: hidden;
+        margin-bottom: 20px;
+        height: 226px;
+
+        &:hover {
+            .media-block {
+                @include opacity(0.9);
+            }
+
+            .title-block {
+                margin-top: -10px;
+            }
+        }
+
+        .media-block {
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+            object-fit: cover;
+            @include transition(all 0.2s linear);
+            @include opacity(0.7);
+        }
+
+        .content-block {
+            position: absolute;
+            left: 0;
+            text-align: center;
+            top: 50%;
+            width: 100%;
+            @include transform(translateY(-50%));
+        }
+
+        .title-block {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            @include transition(all 0.2s linear);
+        }
+    }
+}
+
+.has-slider {
+    margin: 0 -10px;
+
+    .slider-item {
+        padding: 0 10px;
+    }
+
+    .slick-dots {
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
+
+        li {
+            width: auto;
+            height: auto;
+            margin: 0;
+
+            button {
+                padding: 0;
+                width: 12px;
+                height: 4px;
+                margin: 0 5px;
+                background-color: #999;
+            }
+
+            &.slick-active button {
+                background-color: $primary-color;
+            }
+
+            button::before {
+                display: none;
+            }
+        }
+    }
+}

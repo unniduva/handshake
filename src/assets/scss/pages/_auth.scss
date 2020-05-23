@@ -1,0 +1,64 @@
+//////////////////////////////////////////////////////
+/// Page: Login, Signup, Reset and Forgot Password ///
+//////////////////////////////////////////////////////
+
+.auth-bg{
+    background-color: #eee;
+    min-height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .auth-wrapper{
+        padding: 30px 0; 
+    }
+    .title-block{
+        font-size: 30px;
+        text-align: center;
+        font-weight: 500;
+        color: $primary-color;
+        padding-bottom: 10px;
+    }
+    .auth-wrapper-inner{
+        max-width: 400px;
+        width: 90%;
+        margin: auto;
+        padding: 40px;
+        background-color: #fff;
+        @include border-radius(6px);
+        @include box-shadow(0 5px 15px rgba(black, .1))
+    }
+    .auth-wrapper-inner--signup{
+        max-width: 660px;
+    }
+    .auth-alter{
+        font-size: 14px;
+        font-family: $sub-font;
+        a{
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: underline;
+            color: $sub-font-color;
+            &:hover{
+                color: $default-font-color;
+            }
+        }
+    }
+    .bottom-link-block{
+        padding-top: 20px;
+        text-align: center;
+        font-family: $sub-font;
+        font-size: 14px;
+        span{
+            margin-right: 5px;
+        }
+        a{
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: underline;
+            color: $sub-font-color;
+            &:hover{
+                color: $default-font-color;
+            }
+        }
+    }
+}

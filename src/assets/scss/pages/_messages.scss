@@ -1,0 +1,219 @@
+/////////////////////////////////
+/// Page: Messages ///
+/////////////////////////////////
+
+.messages-wrapper{
+    padding: 40px 0;
+    .messages-tab-wrapper{
+        padding-top: 10px;
+    }
+}
+.messages-tab-wrapper{
+    .ant-tabs-nav {
+        .ant-tabs-tab{
+            padding: 0 50px 20px 0;
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0 10px 0 0;
+            color: rgba($default-font-color, .4);
+        }
+        .ant-tabs-tab-active{
+            color: $primary-color;
+        }
+    }
+    .ant-tabs-bar{
+        margin-bottom: 30px;
+    }
+}
+.my-request-list-item{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    @include border-radius(3px);
+    background: #FFFFFF; 
+    border: 1px solid #E5E5E5;
+    margin-bottom: 10px;
+    .media-block{ 
+        height: 160px;
+        position: relative;
+        background-color: #eee;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            font-size: 0;
+        }
+        .status-block{
+            position: absolute;
+            left: 0;
+            top: 10px;
+            @include border-radius(0px 4px 4px 0px); 
+        }
+    }
+    .content-block{
+        padding: 25px 25px 10px 25px;
+        .title-block{
+            font-size: 20px;
+            font-weight: 600;
+            color: $primary-color;
+            margin-bottom: 0;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .request-id{
+            font-size: 12px;
+            font-weight: 500;
+            color: $sub-font-color;
+        }
+        .cancel-btn{
+            height: 36px;
+            padding: 0 15px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .bottom-block{
+            display: flex;
+            padding-top: 20px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .detail-item{
+            padding-right: 20px;
+            padding-bottom: 15px;
+        }
+        .label-block{
+            font-size: 11px;
+            font-weight: 500;
+            color: $sub-font-color;
+            font-family: $sub-font;
+        }
+        .value-block{
+            font-size: 15px;
+            color: rgba($title-font-color, .7);
+            font-weight: normal;
+            font-family: $sub-font;
+        }
+    }
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        flex-direction: row;
+        .media-block{ 
+            height: auto;
+            min-height: 100%;
+            flex: 0 0 200px;
+        }
+        .content-block{  
+            width: 100%;  
+            .btn-wrap{
+                text-align: right;
+            }
+            .detail-item{ 
+                padding-right: 50px;
+            } 
+            .cancel-btn{
+                margin-top: 0;
+            }
+        }
+    }
+}
+.filter-option{
+    margin-bottom: 20px;
+    text-align: right;
+    .ant-select{
+        max-width: 200px;
+        display: inline-block;
+        text-align: left;
+    }
+}
+.studio-booking-list-item{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    @include border-radius(3px);
+    background: #FFFFFF; 
+    border: 1px solid #E5E5E5;
+    margin-bottom: 10px; 
+    .content-block{
+        padding: 25px 20px;
+        .title-block{
+            font-size: 20px;
+            font-weight: 600;
+            color: $primary-color;
+            margin-bottom: 5px;
+            display: block;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .sub-title-wrap{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .request-id{
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 10px;
+            padding-top: 1px;
+            color: $sub-font-color;
+        }
+        .detail-wrap{
+            display: flex;
+            padding-top: 20px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .detail-item{
+            padding-right: 20px;
+            padding-bottom: 15px;
+        }
+        .label-block{
+            font-size: 11px;
+            font-weight: 500;
+            color: $sub-font-color;
+            font-family: $sub-font;
+        }
+        .value-block{
+            font-size: 15px;
+            color: rgba($title-font-color, .7);
+            font-weight: normal;
+            font-family: $sub-font;
+        }
+        .btn-wrap .ant-btn{
+            display: inline-block;
+            height: 36px;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+    }
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        flex-direction: row;
+        .media-block{ 
+            height: auto;
+            min-height: 100%;
+            flex: 0 0 200px;
+        }
+        .content-block{  
+            width: 100%;  
+            .btn-wrap{
+                text-align: right;
+            }
+            .detail-item{ 
+                padding-right: 50px;
+                padding-bottom: 0;
+            } 
+            .cancel-btn{
+                margin-top: 0;
+            }
+        }
+    }
+}

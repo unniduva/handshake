@@ -1,0 +1,36 @@
+//fonts
+$Roboto                 : 'Roboto', sans-serif;
+$Poppins                : 'Poppins', sans-serif;
+
+
+// ============== Define colors ============
+
+//base colors   
+$primary-color          : #932068 !default;  
+
+//text colors
+$default-font-color     : #4A4A4A !default;
+$sub-font-color         : rgba(#4A4A4A, .7) !default;
+$title-font-color       : #000000 !default; 
+$link-color             : #2253ec !default;
+$border-color           : #e4e4e4 !default;
+
+//button colors
+$default-btn-bg         : white !default;
+$default-btn-color      : black !default; 
+
+//Fonts
+$font-family-base       : $Poppins !default;
+$title-font             : $Poppins !default;  
+$sub-font               : $Roboto !default; 
+$paragraph              : $Roboto !default; 
+$icon-font              : 'StudioRentIcons' !default; 
+
+//background color
+$bg-color               : #ffffff !default; 
+$bg-dark                : #F9F0EF !default; 
+
+//radius
+$radius                 : 4px !default;
+$radius-large           : 5px !default;
+$radius-small           : 3px !default; 

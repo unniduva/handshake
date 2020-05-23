@@ -1,0 +1,234 @@
+/////////////////////////////////
+/// Page: Add Studio ///
+/////////////////////////////////
+
+.add-studio-wrapper {
+    padding: 60px 0;
+
+    .main-title {
+        color: $primary-color;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .sub-title {
+        font-weight: 500;
+        font-size: 18px;
+        font-family: $sub-font;
+    }
+
+    .main-para-block {
+        font-size: 15px;
+        color: $sub-font-color;
+        margin-bottom: 30px;
+        display: block;
+    }
+
+    .daily-from-field {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        max-width: 300px;
+        width: 100%;
+        align-items: center;
+
+        .separator-block {
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .ant-time-picker-input {
+            height: 36px;
+        }
+    }
+
+    .terms-checkbox {
+        font-size: 14px;
+        font-weight: 500;
+        font-family: $sub-font;
+        color: rgba($default-font-color, 9);
+
+        a {
+            margin-left: 5px;
+            text-decoration: underline;
+            color: $default-font-color;
+        }
+    }
+
+    .discount-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .ant-input {
+            width: 120px;
+            height: 38px;
+            margin: 0 20px;
+        }
+    }
+
+    .note-text {
+        font-size: 12px;
+        color: $sub-font-color;
+    }
+
+    .ant-upload-list {
+        margin-top: 20px;
+
+        .ant-upload-list-item {
+            width: 100%;
+            float: left;
+        }
+    }
+
+    .uploader-block {
+        &.ant-upload {
+            max-width: 400px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.01);
+            border: 2px dashed rgba(74, 74, 74, 0.1);
+            @include border-radius(6px 4px 4px 4px);
+        }
+
+        .add-icon-block {
+            color: rgba($default-font-color, .3);
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .upload-label-text {
+            color: $sub-font-color;
+            font-size: 14px;
+            font-family: $sub-font;
+        }
+    }
+
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        .main-title {
+            font-size: 30px;
+        }
+
+        .daily-from-field {
+            margin-top: 0;
+            display: inline-flex;
+            margin-left: 15px;
+        }
+
+        .discount-block {
+            flex-direction: row;
+        }
+
+        .uploader-block {
+            &.ant-upload {
+                height: 260px;
+            }
+        }
+
+        .ant-upload-list {
+            .ant-upload-list-item {
+                width: 49%;
+                margin-right: 1%;
+            }
+        }
+    }
+
+    @include min-md {
+        .ant-upload-list {
+            .ant-upload-list-item {
+                width: 32.33333%;
+            }
+        }
+    }
+
+    @include min-lg {
+        .main-title {
+            font-size: 36px;
+        }
+
+        .ant-upload-list {
+            .ant-upload-list-item {
+                width: 24%;
+            }
+        }
+    }
+}
+
+.add-studio-steps {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 30px;
+
+    .step-item {
+        flex: 1 1 50%;
+        max-width: 50%;
+        padding: 15px 20px;
+        font-size: 14px;
+        color: #A7A7A7;
+        font-weight: normal;
+        text-align: center;
+        position: relative;
+        @include transition(all 0.2s linear);
+
+        .icon-block {
+            margin-right: 10px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #A7A7A7;
+            @include transition(all 0.2s linear);
+        }
+
+        &.active {
+            color: $primary-color;
+            font-weight: 500;
+
+            &::after {
+                background-color: $primary-color;
+            }
+        }
+
+        &:hover {
+            color: $default-font-color;
+
+            &::after {
+                background-color: $default-font-color;
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        margin-bottom: 60px;
+
+        .step-item {
+            flex: 1 1 33.3333%;
+            max-width: 33.333%;
+            padding: 5px 20px 20px;
+            font-size: 16px;
+        }
+    }
+
+    @include min-md {
+        .step-item {
+            padding: 5px 20px 20px;
+            font-size: 16px;
+            flex: 1;
+            max-width: none;
+        }
+    }
+}

@@ -1,0 +1,321 @@
+/////////////////////////////////
+/// Page: My request details ///
+/////////////////////////////////
+
+.my-request-details{
+    padding: 60px 0;
+    .container{
+        max-width: 900px; 
+    }
+    .details-wrap{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        @include border-radius(3px);
+        background: #FFFFFF; 
+        border: 1px solid #E5E5E5;
+    }
+    .media-block{ 
+        height: 250px;
+        position: relative;
+        background-color: #eee;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            font-size: 0;
+        }
+        .status-block{
+            position: absolute;
+            left: 0;
+            top: 10px;
+            @include border-radius(0px 4px 4px 0px);  
+        } 
+    }
+    .detail-header{
+        padding: 30px;
+        .id-block{
+            font-weight: 600;
+            font-size: 13px;
+            color: $sub-font-color;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .title-block{
+            font-size: 28px;
+            font-weight: 500;
+            color: $primary-color;
+            margin-bottom: 5px;
+        }
+        .studio-sub-info{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .sub-info-item{
+            margin-right: 15px;
+            position: relative;
+            padding-right: 15px;
+            font-size: 13px;
+            letter-spacing: 0.2px;
+            font-weight: normal;
+            &:last-child{
+                padding-right: 0;
+                margin-right: 0;
+                &::after{
+                    display: none;
+                }
+            }
+            &::after{
+                content: '';
+                width: 6px;
+                height: 6px;
+                @include border-radius(50%);
+                position: absolute;
+                right: 0;
+                top: 50%;
+                margin-top: -3px;
+                background-color: #D8D8D8;
+            }
+            .icon-block{
+                margin-right: 5px;
+                @include opacity(0.7);
+                font-size: 12px;
+            }
+        }
+        .cancel-btn{
+            height: 36px;
+            padding: 0 15px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    }
+    .info-block{
+        padding: 30px 30px 10px;
+        border-top: solid 1px #E5E5E5;
+        border-bottom: solid 1px #E5E5E5;
+        .info-item{
+            padding-bottom: 20px;
+        }
+        .label-block{
+            font-size: 12px;
+            font-weight: 500;
+            color: $sub-font-color;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+            font-family: $sub-font;
+        }
+        .value-block{
+            font-size: 16px;
+            color: rgba($title-font-color, .7);
+            font-weight: 500;
+            font-family: $sub-font;
+        }
+    }
+    .block-title{
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        color: $primary-color;
+    }
+    .has-padding{
+        padding: 30px;
+    }
+    .service-block{ 
+        margin-bottom: 35px;
+        .service-item{
+            position: relative;
+            background: #FFFFFF;
+            border: 1px solid rgba(229, 229, 229, 0.6);
+            @include border-radius(4px);
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .title-block{
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: $default-font-color;
+        }
+        .description-block{
+            font-size: 13px; 
+            margin-bottom: 0;
+            color: $sub-font-color;
+        }
+        .service-status{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 10px;
+            .icon-block{
+                font-size: 15px;
+                margin-right: 8px;
+            }
+            .text-block{
+                font-size: 13px;
+                font-weight: 500;
+            }
+        }
+        .active{
+            color: #73ab73;
+        }
+        .not-active{
+            color: #dd4d4d;
+        }
+    }
+    .details-list-wrap{ 
+        margin-bottom: 35px;
+        .list-item{
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-family: $sub-font;
+            font-size: 15px;
+            font-weight: normal;
+            color: $default-font-color;
+        }
+        .label-block{
+            @include opacity(0.7);
+        }
+        .data-block{
+            color: $default-font-color;
+            @include opacity(0.9);
+        }
+        a{
+            color: inherit;
+            text-decoration: underline;
+            &:hover{
+                color: $link-color;
+            }
+        }
+    }
+    .text-wrap{
+        margin-bottom: 20px;
+        .para-block{
+            font-size: 15px;
+            line-height: 1.8;
+            color: $default-font-color;
+            @include opacity(0.8);
+            padding-bottom: 20px;
+            font-weight: normal;
+        }
+    }
+    .location-map-block{
+        @include border-radius(3px);
+        width: 100%;
+        height: 250px;
+        background-color: #eee;
+        margin-bottom: 30px;
+    }
+    .charges-list{ 
+        .list-item{
+            margin-bottom: 8px;
+            font-weight: normal;
+            font-family: $sub-font;
+            font-size: 14px;
+            font-weight: normal;
+            color: $default-font-color;
+        }
+        .label-block{
+            @include opacity(0.7);
+            padding-right: 10px;
+            width: 200px;
+            float: left;
+        }
+        .value-block{
+            color: $default-font-color;
+            @include opacity(0.9);
+            margin-left: 220px;
+            text-align: right;
+        }
+    }
+    .total-booking-price{
+        padding-top: 25px;
+        margin-top: 20px;
+        border-top: solid 1px #E5E5E5;
+        .list-item{
+            font-weight: 500;
+        }
+        .label-block{
+            padding-right: 10px;
+            width: 200px;
+            float: left;
+        }
+        .value-block{
+            color: $default-font-color;
+            margin-left: 220px;
+            text-align: right;
+            font-size: 16px;
+        }
+    }
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        flex-direction: row; 
+        .detail-header{ 
+            .title-block{
+                font-size: 32px; 
+            }
+        }
+        .content-block{  
+            width: 100%;  
+            .btn-wrap{
+                text-align: right;
+            } 
+            .cancel-btn{ 
+                margin-top: 0;
+            }
+        }
+        .service-block{ 
+            .service-item{
+                padding-right: 150px;
+            }
+            .service-status{
+                position: absolute;
+                right: 30px;
+                top: 25px;
+                margin-top: 0;
+                .icon-block{
+                    font-size: 15px;
+                    margin-right: 8px;
+                    position: relative;
+                    top: -1px;
+                }
+                .text-block{
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+            }
+        }
+        .details-list-wrap{
+            margin-bottom: 40px;
+            .label-block{ 
+                padding-right: 10px;
+                width: 200px;
+                position: relative; 
+                float: left;
+                &::after{
+                    content: ':';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            .data-block{
+                margin-left: 220px;
+            }
+            a{
+                color: inherit;
+                text-decoration: underline;
+                &:hover{
+                    color: $link-color;
+                }
+            }
+        }
+        .location-map-block{ 
+            margin-bottom: 0;
+        }
+    }
+}

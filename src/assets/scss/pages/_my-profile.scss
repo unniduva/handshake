@@ -1,0 +1,88 @@
+//////////////////////////////////////////////////////
+/// Page: My profile page ///
+//////////////////////////////////////////////////////
+
+.my-profile-wrapper{
+    padding: 40px 0;
+    .primary-title{
+        margin-bottom: 50px;
+    }
+    .container{
+        max-width: 900px;
+    }
+    .dp-block{ 
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        &:hover .hover-block{
+            @include visibility(visible);
+        }
+    }
+    .hover-block{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 160px;
+        height: 160px;
+        @include border-radius(50%);
+        background-color: rgba(black, .4); 
+        @include transition(all 0.2s linear);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        @include visibility(hidden);
+    }
+    .form-block{
+        margin-top: 30px;
+    }
+    .profile-pic-uploader{
+        width: 160px;
+        height: 160px;
+        .ant-upload-select-picture-card{
+            width: 160px;
+            height: 160px;
+            margin: 0 !important;
+            padding: 0 !important;
+            float: none;
+            overflow: hidden;
+            background-color: #eee;
+            position: relative;
+            border: none;
+            @include border-radius(50%);
+        }
+        .ant-upload-select-picture-card .ant-upload{
+            width: 160px;
+            height: 160px;
+            padding: 0;
+        }
+        .icon-block{
+            font-size: 60px;
+            color: #bbb;
+        }
+        .loading-block{
+            font-size: 30px;
+            color: #bbb;
+        }
+        .profile-pic{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include min-sm {
+        .dp-block{
+            float: left; 
+            width: 160px;
+        }
+        .form-block{
+            margin-left: 200px;
+            margin-top: 0;
+        }
+    }
+}

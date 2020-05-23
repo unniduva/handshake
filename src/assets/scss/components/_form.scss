@@ -1,0 +1,172 @@
+.basic-form {
+    .ant-form-item {
+        margin-bottom: 14px;
+    }
+
+    .mb-2x {
+        margin-bottom: 24px;
+    }
+
+    .mb-3x {
+        margin-bottom: 38px;
+    }
+
+    .ant-input {
+        height: 50px;
+        @include border-radius(4px);
+        background: #FCFCFC;
+        border: 1px solid rgba(74, 74, 74, 0.1);
+        font-family: $sub-font;
+        color: $default-font-color;
+        padding: 2px 20px 0;
+        @include placeholder(#4A4A4A, .6);
+    }
+
+    textarea.ant-input {
+        height: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .ant-form-item-label {
+        label {
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba($default-font-color, .9);
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .ant-calendar-picker-input {
+        padding: 2px 40px 0 20px;
+    }
+
+    .ant-calendar-picker {
+        width: 100%;
+
+        .ant-calendar-picker-icon {
+            font-size: 16px;
+            color: $sub-font-color;
+            right: 20px;
+        }
+    }
+
+    .ant-time-picker {
+        width: 100%;
+
+        .ant-time-picker-input {
+            height: 50px;
+            @include border-radius(4px);
+            background: #FCFCFC;
+            border: 1px solid rgba(74, 74, 74, 0.1);
+            font-family: $sub-font;
+            color: $default-font-color;
+            padding: 2px 20px 0;
+        }
+
+        .ant-time-picker-icon {
+            right: 20px;
+            width: auto;
+            height: auto;
+            margin-top: 0;
+            @include transform(translateY(-50%));
+        }
+
+        .ant-time-picker-clock-icon {
+            font-size: 8px;
+            color: $sub-font-color;
+        }
+    }
+
+    .has-error {
+        .ant-select .ant-select-selection--single {
+            border-color: #f5222d;
+        }
+    }
+
+    .ant-select {
+        width: 100%;
+
+        .ant-select-selection--single {
+            height: 50px;
+            @include border-radius(4px);
+            background: #FCFCFC;
+            border: 1px solid rgba(74, 74, 74, 0.1);
+            font-family: $sub-font;
+            color: $default-font-color;
+            padding: 2px 20px 0;
+        }
+
+        .ant-select-selection__rendered {
+            height: 100%;
+            line-height: 50px;
+            margin: 0;
+        }
+
+        .ant-select-arrow {
+            right: 20px;
+            width: auto;
+            height: auto;
+            margin-top: 0;
+            @include transform(translateY(-50%));
+        }
+    }
+
+    .has-error .ant-form-explain {
+        margin-top: 4px;
+        font-size: 13px;
+        font-family: $sub-font;
+        font-weight: 300;
+    }
+
+    .ant-radio-wrapper {
+        .ant-radio {
+            position: relative;
+            top: -2px;
+        }
+    }
+
+    .c-radio-list {
+        display: flex;
+        flex-direction: column;
+
+        .ant-radio-wrapper {
+            margin-bottom: 10px;
+        }
+    }
+
+    .ant-input-password {
+        .ant-input-suffix {
+            font-size: 18px;
+        }
+    }
+
+    .ant-input-password .ant-input:not(:last-child) {
+        padding-right: 35px;
+    }
+
+    .submit-btn {
+        height: 60px;
+        line-height: 60px;
+        padding: 0 30px;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        @include border-radius(6px);
+    }
+
+    .btn-has-icon {
+        .icon-block {
+            font-size: 20px;
+        }
+    }
+}
+
+.ant-time-picker {
+    .ant-time-picker-clear {
+        right: 35px;
+    }
+}

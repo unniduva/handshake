@@ -1,0 +1,79 @@
+/////////////////////////////////
+/// Page: My studios ///
+/////////////////////////////////
+
+.my-studios-listing-wrapper {
+    padding: 60px 0;
+}
+
+.my-studio-item-card {
+    margin-bottom: 20px;
+
+    .media-block {
+        height: 200px;
+        @include border-radius(6px 6px 0 0);
+        overflow: hidden;
+        background-color: #eee;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            font-size: 0;
+        }
+    }
+
+    .content-block {
+        padding: 20px;
+        border: 1px solid #E5E5E5;
+        border-top: none;
+        @include border-radius(0 0 6px 6px);
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+
+    .price-wrap {
+        .price-block {
+            font-size: 16px;
+            font-weight: 600;
+            color: $title-font-color;
+        }
+
+        .price-label {
+            margin-left: 5px;
+            font-size: 14px;
+            color: $sub-font-color;
+            font-family: $sub-font;
+        }
+    }
+
+    .btn-wrap {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .ant-btn {
+            height: 38px;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 0 15px;
+        }
+
+        .add-btn {
+            margin-bottom: 10px;
+        }
+
+        @include min-xs-medium {
+            flex-direction: row;
+
+            .add-btn {
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+        }
+    }
+}

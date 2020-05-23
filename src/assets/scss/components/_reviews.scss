@@ -1,0 +1,78 @@
+.reviews-list{
+    .list-item{
+        margin-bottom: 25px;
+        min-height: 48px;
+        .dp-block{
+            float: left;
+            width: 48px;
+            height: 48px;
+            @include border-radius(50%);
+            overflow: hidden;
+            background-color: #eee;
+            img{
+                width: 100%;
+                font-size: 0;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .right-block{
+            margin-left: 68px;
+        }
+        .user-name{
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba($primary-color, .8);
+            margin-bottom: 0;
+        }
+        .bottom-block{
+            margin-top: -2px;
+        }
+        .rating-block{
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            padding-right: 15px;
+            &::after{
+                content: '';
+                width: 6px;
+                height: 6px;
+                @include border-radius(50%);
+                position: absolute;
+                right: 0;
+                top: 50%;
+                margin-top: -3px;
+                background-color: #D8D8D8;
+            }
+            .icon-block{
+                font-size: 10px;
+                color: $default-font-color;
+            }
+            .ant-rate{
+                font-size: 10px;
+                .ant-rate-star{
+                    margin-right: 2px;
+                }
+            }
+        }
+        .created-on{
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            color: $sub-font-color;
+            font-size: 12px;
+            font-family: $sub-font;
+        }
+        .review-text{
+            font-size: 15px; 
+            margin-top: 10px;
+            margin-bottom: 0;
+            color: $sub-font-color;
+            line-height: 1.8;
+            font-style: italic;
+        }
+    }
+    .show-all{
+        padding-left: 68px;
+    }
+}

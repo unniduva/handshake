@@ -1,0 +1,44 @@
+body .ant-modal-mask{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.ant-modal-wrap{
+    .c-modal{
+        .ant-modal-content{
+            padding: 55px;
+            @include border-radius(6px);
+        }
+        .ant-modal-close{
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+        .close-wrap{
+            text-align: center;
+            line-height: normal;
+            color: #fff;
+            span{
+                display: block;
+            }
+            .icon-block{
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+            .esc-label{
+                font-size: 10px;
+                font-weight: 500;
+            }
+        }
+        .ant-modal-header{
+            padding: 0 0 25px;
+            border: none;
+        }
+        .ant-modal-title{
+            font-size: 26px;
+            font-weight: 600;
+            line-height: normal;
+        }
+        .ant-modal-body{
+            padding: 0;
+        }
+    }
+}

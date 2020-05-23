@@ -1,0 +1,28 @@
+//////////////////////////
+/// Component: Buttons ///
+//////////////////////////
+
+body .ant-breadcrumb{ 
+    margin-bottom: 35px;
+    span{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .ant-breadcrumb-link{
+        font-size: 13px;
+        font-weight: 500;
+        color: $default-font-color;
+        > a{ 
+            color: $primary-color;
+            text-decoration: underline;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .ant-breadcrumb-separator{
+        margin: 0 5px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+}

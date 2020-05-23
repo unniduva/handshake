@@ -1,0 +1,342 @@
+//////////////////////////
+/// Module: Header ///
+//////////////////////////
+.main-header {
+    padding: 15px 20px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+
+    .app-back-btn {
+        font-size: 16px;
+        margin-left: -10px;
+        margin-right: 5px;
+        color: $primary-color;
+
+    }
+
+    .logo-block {
+        max-width: 140px;
+    }
+
+    .search-box {
+        @include transition(all 0.2s linear);
+    }
+
+    .language-select {
+        margin-right: 15px;
+
+        .full-name,
+        .short-name {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .full-name {
+            display: none;
+        }
+    }
+
+    .left-block,
+    .right-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .main-nav {
+        @include transition(all 0.2s linear);
+
+        .menu-item {
+            font-size: 14px;
+            font-weight: 500;
+            color: $default-font-color;
+
+            &:hover,
+            &.active {
+                color: $title-font-color;
+            }
+        }
+    }
+
+    .my-profile-menu {
+        margin-left: 15px;
+        position: relative;
+        z-index: 9;
+
+        .dp-block {
+            display: block;
+            width: 24px;
+            cursor: pointer;
+            height: 24px;
+            border: solid 1px #eee;
+            @include border-radius(50%);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .profile-text-avatar {
+            border-color: $primary-color;
+            background-color: $primary-color;
+            display: flex;
+            font-size: 12px;
+            font-weight: 400;
+            color: #fff;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .toggle-menu-btn,
+    .toggle-search-btn {
+        display: none;
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .toggle-search-btn {
+        font-size: 18px;
+    }
+
+    .toggle-menu-btn {
+        font-size: 22px;
+        margin-left: 15px;
+    }
+
+    ///////////////////////////////////////////////
+    /// Media queries ///
+    ///////////////////////////////////////////////
+    @include max-xs {
+        .main-nav {
+            @include visibility(hidden);
+            background-color: #fff;
+            padding: 20px 0;
+            z-index: 9;
+            @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            margin-top: -10px;
+
+            .menu-item {
+                display: block;
+                padding: 10px 20px;
+            }
+
+            &.open {
+                @include visibility(visible);
+                margin-top: 1px;
+            }
+        }
+
+        .toggle-menu-btn {
+            display: block;
+        }
+    }
+
+    @include max-sm {
+        .search-box {
+            @include visibility(hidden);
+            background-color: #fff;
+            padding: 15px 20px;
+            z-index: 9;
+            @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            margin-top: -10px;
+
+            &.open {
+                @include visibility(visible);
+                margin-top: 1px;
+            }
+
+            .icon-block {
+                left: 40px;
+            }
+        }
+
+        .toggle-search-btn {
+            display: block;
+        }
+    }
+
+    @include min-sm {
+        padding: 15px 36px;
+
+        .app-back-btn {
+            display: none;
+        }
+
+        .logo-block {
+            margin-right: 30px;
+            max-width: 170px;
+        }
+
+        .main-nav {
+            .menu-item {
+                margin-left: 10px;
+            }
+        }
+
+        .my-profile-menu {
+            margin-left: 20px;
+
+            .dp-block {
+                width: 46px;
+                height: 46px;
+            }
+
+            .profile-text-avatar {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @include min-md {
+        .search-box {
+            width: 380px;
+        }
+
+        .language-select {
+            margin-right: 0;
+        }
+
+        .search-box {
+            width: 250px;
+            display: block;
+        }
+
+        .language-select {
+            .short-name {
+                display: none;
+            }
+
+            .full-name {
+                display: block;
+            }
+        }
+    }
+
+    @include min-lg {
+        .main-nav {
+            .menu-item {
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+.header-profile-dropdown {
+    background-color: #fff;
+    @include border-radius(0 0 6px 6px);
+    margin-top: 12px;
+    border: solid 1px #eee;
+    overflow: hidden;
+    width: 250px;
+
+    .dropdown-header {
+        padding: 10px 20px;
+        border-bottom: solid 1px #eee;
+
+        .dp-block {
+            float: left;
+            display: block;
+            width: 46px;
+            border: solid 1px #eee;
+            cursor: pointer;
+            height: 46px;
+            @include border-radius(50%);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .profile-text-avatar {
+            border-color: $primary-color;
+            background-color: $primary-color;
+            display: flex;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .user-details {
+            margin-left: 60px;
+            min-height: 46px;
+            padding-top: 5px;
+        }
+
+        .name-block {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: -2px;
+        }
+
+        .email-block {
+            font-size: 12px;
+            font-weight: normal;
+            color: $sub-font-color;
+            word-break: break-all;
+        }
+    }
+
+    .menu-item {
+        padding: 10px 20px;
+        color: $default-font-color;
+        border-bottom: 1px solid #eee;
+        display: block;
+        color: $default-font-color;
+        background-color: #fff;
+
+        &:hover {
+            background-color: #fafafa;
+            color: #000;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .signout-btn:hover {
+        color: #f24750;
+    }
+}
+
+.language-dropdown {
+    min-width: 100px;
+
+    .short-name {
+        display: none;
+    }
+
+    ul {
+        padding: 10px 0;
+
+        .ant-select-dropdown-menu-item {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px 20px;
+        }
+    }
+}

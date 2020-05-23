@@ -1,0 +1,10 @@
+.social-links{
+    .social-item{
+        color: rgba(74, 74, 74, 0.8);
+        font-size: 18px;
+        margin-right: 20px;
+        &:hover{
+            color: $primary-color;
+        }
+    }
+}

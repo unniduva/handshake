@@ -1,0 +1,91 @@
+.studios-nearby{
+    .studio-item{ 
+        display: block;
+        margin-bottom: 35px;
+        min-height: 200px;
+        &:hover{ 
+            .media-block{ 
+                @include opacity(0.9); 
+            }
+        }
+        .media-block{
+            @include border-radius(6px); 
+            overflow: hidden;
+            background-color: #000;
+            height: 200px;
+            @include transition(all 0.2s linear);
+            img{ 
+                width: 100%;
+                font-size: 0;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .content-block{
+            padding-top: 15px;
+        }
+        .title-block{ 
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            @include ellipsis();
+            display: block;
+        }
+    }
+    .bottom-block{
+        display: flex;
+        flex-direction: row; 
+        align-items: center;
+        .price-block{
+            flex: 1 1 60%;
+            max-width: 60%;
+        }
+        .price{
+            font-size: 16px;
+            font-weight: 600;
+            color: $title-font-color;
+        }
+        .label{
+            font-size: 14px;
+            font-weight: normal;
+            font-family: $sub-font;
+            margin-left: 5px;
+            color: $sub-font-color;
+        }
+        .right-block{
+            flex: 1 1 40%;
+            max-width: 40%;
+            display: flex;
+            justify-content: flex-end; 
+            flex-direction: row; 
+            align-items: center;
+        }
+        .rating-block{
+            color: $sub-font-color;
+            .icon-block{
+                font-size: 12px;
+                margin-right: 5px;
+            }
+            .rating-text{
+                font-size: 13px;
+                font-family: $sub-font;
+            }
+        }
+        .total-booking{
+            position: relative;
+            font-size: 13px;
+            font-family: $sub-font;
+            color: $sub-font-color;
+            &::before{
+                content: '';
+                width: 6px;
+                height: 6px;
+                @include border-radius(50%);
+                display: inline-block;
+                margin: 0 7px;
+                vertical-align: middle;
+                background-color: #D8D8D8;
+            }
+        }
+    }
+}

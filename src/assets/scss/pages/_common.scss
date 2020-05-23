@@ -1,0 +1,432 @@
+/////////////////////////////
+/// Debug settings ///
+/////////////////////////////
+$debug: false; // true | false
+
+////////////////////////////////////
+/// checking debug operations ///
+////////////////////////////////////
+@if ($debug) {
+    body {
+        border: solid 10px $primary-color;
+    }
+}
+
+/////////////////////////////
+/// RESET STYLES ///
+/////////////////////////////
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a,
+input[type="radio"],
+input[type="checkbox"],
+button,
+select,
+.btn,
+.text-field {
+    @include transition(all 0.2s ease-in-out);
+    outline: none;
+
+    &:hover,
+    &:focus,
+    &:focus {
+        text-decoration: none;
+        outline: none !important;
+        outline-style: none;
+        outline-width: 0;
+    }
+}
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //removing highlight color
+    -webkit-overflow-scrolling: touch; //touch smooth
+}
+
+html,
+body {
+    min-height: 100%;
+    font-family: $font-family-base;
+}
+
+//iOS phone number detection prevent
+a[href^="tel"] {
+    color: inherit;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-base;
+    color: $title-font-color;
+}
+
+//for mozilla
+button::-moz-focus-inner {
+    border: 0;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+
+    &.inline {
+        display: inline-block;
+    }
+}
+
+//safari browser additional inner shadow remove
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"] {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* mobile firefox too! */
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+*::-moz-selection {
+    background: $primary-color;
+    color: #fff;
+    text-shadow: none;
+}
+
+*::selection {
+    background: $primary-color;
+    color: #fff;
+    text-shadow: none;
+}
+
+.radius {
+    @include border-radius($radius);
+}
+
+.clear-radius {
+    @include border-radius(0);
+}
+
+.clearfix {
+    @include clearfloat();
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+pre {
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
+
+a {
+    color: $link-color;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: darken($link-color, 10%);
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+p {
+    color: $default-font-color;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-family: $paragraph;
+}
+
+/////////////////////////////
+/// COMMON STYLES ///
+/////////////////////////////
+
+body {
+    font-family: $font-family-base;
+    color: $default-font-color;
+    background-color: $bg-color !important;
+}
+
+.ant-alert {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.container {
+    max-width: 1140px;
+    width: 90%;
+    margin: auto;
+}
+
+.container-fluid {
+    padding: 0 15px;
+}
+
+.main-inner-wrapper{
+    overflow: hidden;
+}
+
+@include min-sm {
+    .container-fluid {
+        padding: 0 30px;
+    }
+}
+
+@include min-xlg {
+
+    .ant-row-flex,
+    .ant-row {
+        >div.col-xlg-5 {
+            width: 20%;
+        }
+    }
+}
+
+@include min-xlg {
+
+    .ant-row-flex,
+    .ant-row {
+        >div.col-xlg-18 {
+            width: 75%;
+        }
+
+        >div.col-xlg-6 {
+            width: 25%;
+        }
+    }
+}
+
+.app-body {
+    min-height: 90vh;
+    min-height: calc(100vh - 155px);
+}
+
+//loader
+
+.center-progress {
+    text-align: center;
+    padding: 60px 25px;
+}
+
+//table no data
+.ant-table-placeholder {
+    color: rgba(black, 0.2);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+//single line
+.single-line {
+    white-space: nowrap;
+    display: block;
+}
+
+//main content area
+.main-content-area {
+    padding: 60px 0;
+}
+
+//link wrapper
+.link-wrapper {
+    height: 80vh;
+    height: calc(100vh - 90px);
+}
+
+//panel
+.panel.panel-default {
+    @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    border-left: 1px solid #eee;
+    border-radius: 7px;
+}
+
+//link
+.item-link {
+    font-weight: 400;
+    color: $primary-color;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+ 
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.v-align-middle {
+    vertical-align: middle;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-25 {
+    margin-bottom: 25px !important;
+}
+
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.m-r-15 {
+    margin-right: 15px;
+}
+
+.m-b-15 {
+    margin-bottom: 15px;
+}
+
+.container-commom {
+    padding: 20px;
+}
+ 
+.search-box{  
+    position: relative; 
+    .input-block{
+        height: 48px;
+        @include placeholder(#000, 0.4);
+        padding-left: 50px;
+        @include box-shadow(0px 2px 4px rgba(0, 0, 0, 0.0367406));
+        background: #FFFFFF;
+        border: 1px solid rgba(221, 221, 221, 0.450366);
+        &:focus{
+            @include box-shadow(0px 0 8px rgba($primary-color, 0.1));
+            border-color: rgba($primary-color, 0.2);
+        }
+    }
+    .icon-block{
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        color: rgba(black, .7);
+        font-size: 16px;
+        z-index: 1;
+    }
+}
+
+//components dropdown
+.ant-calendar,
+.ant-time-picker-panel{
+    .ant-calendar-input-wrap,
+    .ant-time-picker-panel-input-wrap{
+        height: 50px;
+        @include border-radius(0);
+        background-color: #F7F8F8;
+        border: none;
+        font-family: $sub-font;
+        color: $default-font-color;
+        .ant-calendar-input,
+        .ant-time-picker-panel-input{
+            height: 38px;
+            background-color: inherit;
+        }
+    }
+}
+.ant-select-dropdown{
+    .ant-select-dropdown-menu-item{
+        padding: 10px 20px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+}

@@ -1,0 +1,131 @@
+//Font Import
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Roboto:400,500&display=swap');
+
+@font-face {
+  font-family: 'StudioRentIcons';
+  src: url('../fonts/StudioRentIcons.eot?wno35p');
+  src: url('../fonts/StudioRentIcons.eot?wno35p#iefix') format('embedded-opentype'),
+    url('../fonts/StudioRentIcons.ttf?wno35p') format('truetype'),
+    url('../fonts/StudioRentIcons.woff?wno35p') format('woff'),
+    url('../fonts/StudioRentIcons.svg?wno35p#StudioRentIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  @include iconFont();
+}
+
+.icon-close:before {
+  content: "\e91b";
+}
+
+.icon-pencil:before {
+  content: "\e91a";
+}
+
+.icon-plus:before {
+  content: "\e919";
+}
+
+.icon-caret-down:before {
+  content: "\e915";
+}
+
+.icon-caret-up:before {
+  content: "\e916";
+}
+
+.icon-caret-left:before {
+  content: "\e917";
+}
+
+.icon-caret-right:before {
+  content: "\e918";
+}
+
+.icon-close-round:before {
+  content: "\e912";
+}
+
+.icon-arrow-left:before {
+  content: "\e90d";
+}
+
+.icon-arrow-right:before {
+  content: "\e90e";
+}
+
+.icon-arrow-down:before {
+  content: "\e913";
+}
+
+.icon-arrow-up:before {
+  content: "\e914";
+}
+
+.icon-location:before {
+  content: "\e90f";
+}
+
+.icon-calendar:before {
+  content: "\e910";
+}
+
+.icon-tick-round:before {
+  content: "\e911";
+}
+
+.icon-menu:before {
+  content: "\e900";
+}
+
+.icon-tick:before {
+  content: "\e901";
+}
+
+.icon-youtube:before {
+  content: "\e902";
+}
+
+.icon-facebook:before {
+  content: "\e903";
+}
+
+.icon-twitter:before {
+  content: "\e904";
+}
+
+.icon-instagram:before {
+  content: "\e905";
+}
+
+.icon-mic:before {
+  content: "\e906";
+}
+
+.icon-paper-plane:before {
+  content: "\e907";
+}
+
+.icon-zoom-lens:before {
+  content: "\e908";
+}
+
+.icon-star-fill:before {
+  content: "\e909";
+}
+
+.icon-long-arrow-right:before {
+  content: "\e90a";
+}
+
+.icon-long-arrow-left:before {
+  content: "\e90b";
+}
+
+.icon-search:before {
+  content: "\e90c";
+}

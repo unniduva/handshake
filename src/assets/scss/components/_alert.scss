@@ -1,0 +1,27 @@
+.c-alert{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px !important;
+    .icon-block{
+        position: static !important;
+        width: 48px;
+        height: 48px;
+        background-color: #fff;
+        @include border-radius(50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 15px;
+        &.ant-alert-icon{
+            color: #ED0028;
+        }
+    }
+    .ant-alert-description{
+        font-weight: normal;
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+}

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { generateLabels } from "../../helpers";
 import { setLanguage, getLanguage } from "../../helpers/utility";
 import { history } from "../../store";
-import { Icon } from "antd"
 const { Option } = Select
 
 const mapDispatchToProps = ({ user, studio }) => {
@@ -45,7 +44,7 @@ class TopBar extends React.Component {
     }
     async componentDidUpdate() {
         console.log(this.props.language, this.state.lang)
-        // if (this.props.language !== this.state.lang) this.props.updateLanguage(this.state.lang)
+        if (this.props.language !== this.state.lang) this.props.updateLanguage(this.state.lang)
     }
     menuHandler() {
         this.setState({
@@ -68,27 +67,24 @@ class TopBar extends React.Component {
         // this.setState({
         //     searchKeyword: e.target.value
         // });
-        // this.props.setPublicSearchPhase({ searchKeyword: e.target.value })
+        this.props.setPublicSearchPhase({ searchKeyword: e.target.value })
     }
 
     async searchStudios(e) {
-        // e.preventDefault();
-        // await this.props.publicSearch({ searchPhase: this.props.searchKeyword, language: this.props.language })
-        // history.push("/search-result");
+        e.preventDefault();
     }
     handleLangChange = async data => {
-        // await setLanguage(data)
-        // await this.props.listAllStudios({ limit: 3, language: data })
-        // await this.setState({ lang: data })
-        // await this.props.updateLanguage(data)
+        await setLanguage(data)
+        await this.setState({ lang: data })
+        await this.props.updateLanguage(data)
     }
     handleRedirect = () => {
-        // this.props.setPublicSearchPhase({ searchKeyword: "" })
+        this.props.setPublicSearchPhase({ searchKeyword: "" })
         // this.setState({ searchKeyword: "" })
         history.push("/")
     }
     async componentWillReceiveProps(newProp) {
-        // if (newProp.page === "Home" && this.props.page !== "Home") this.props.searchKeyword !== "" && await this.props.setPublicSearchPhase({ searchKeyword: "" })
+        if (newProp.page === "Home" && this.props.page !== "Home") this.props.searchKeyword !== "" && await this.props.setPublicSearchPhase({ searchKeyword: "" })
     }
     render() {
         const { user } = this.props;
@@ -105,12 +101,12 @@ class TopBar extends React.Component {
                         <div className="email-block">{user && user.email}</div>
                     </div>
                 </div>
-               <Link to="/my-profile" className="menu-item">{"My profile"}</Link>
-                {/*  <Link to="/my-studios" className="menu-item">{generateLabels("my_studios")}</Link>
+                <Link to="/my-profile" className="menu-item">{generateLabels("my_profile")}</Link>
+                <Link to="/my-studios" className="menu-item">{generateLabels("my_studios")}</Link>
                 {/* <Link to="/settings" className="menu-item">{generateLabels("settings")}</Link> */}
                 <Link to="/notifications" className="menu-item">{generateLabels("notifications")}</Link>
-                <Link to="/help" className="menu-item">{generateLabels("help")}</Link>
-                <Link to="/faq" className="menu-item">FAQ</Link> */}
+                {/* <Link to="/help" className="menu-item">{generateLabels("help")}</Link> */}
+                <Link to="/cms/faq" className="menu-item">{`FAQ-${generateLabels("help")}`}</Link>
                 <Link to="/" className="menu-item signout-btn" onClick={this.logout.bind(this)}>
                     {generateLabels("logout")}
                 </Link>
@@ -118,21 +114,23 @@ class TopBar extends React.Component {
         )
         // console.log("user =", user);
         return (
-            <header className="main-header" style={{height:'60px'}}>
+            <header className="main-header">
                 <div className="left-block">
 
                     {this.props.page !== "Home" && <button className="btn icon-arrow-left app-back-btn" onClick={() => history.goBack()}></button>}
-                    <span style={{ cursor: "pointer" }} onClick={() => this.handleRedirect()} className="logo-block"><img src="/images/logo.png" alt="" /></span>
-                    {/* <form className={`search-box${this.state.searchIsOpen ? " open" : ""}`} onSubmit={this.searchStudios}>
+                    <div style={{ cursor: "pointer", display: "contents" }} onClick={() => this.handleRedirect()} className="logo-block">
+                        <img style={{ marginTop: "-9px" }} src="/images/icon.png" alt="" />
+                        <h2 style={{ padding: "6px 12px 0px 1px", color: "#932068" }}>HandShake</h2></div>
+                    <form className={`search-box${this.state.searchIsOpen ? " open" : ""}`} onSubmit={this.searchStudios}>
                         <span className="icon-search icon-block"></span>
-                        <Input className="input-block" placeholder={``} value={this.props.searchKeyword} onChange={this.searchOnChange} />
-                    </form> */}
+                        <Input className="input-block" placeholder={`${generateLabels("wrd_try")} “name of charity”`} value={this.props.searchKeyword} onChange={this.searchOnChange} />
+                    </form>
                 </div>
                 <div>
 
                 </div>
                 <div className="right-block">
-                    {/* <Select value={this.state.lang} onChange={data => this.handleLangChange(data)} className="language-select" dropdownClassName="language-dropdown">
+                    <Select value={this.state.lang} onChange={data => this.handleLangChange(data)} className="language-select" dropdownClassName="language-dropdown">
                         <Option value="eng">
                             <span className="full-name">English</span>
                             <span className="short-name">Eng</span>
@@ -141,14 +139,14 @@ class TopBar extends React.Component {
                             <span className="full-name">Swedish</span>
                             <span className="short-name">Swd</span>
                         </Option>
-                    </Select> */}
+                    </Select>
                     <button className="btn icon-search toggle-search-btn" type="button" onClick={this.searchHandler}></button>
                     <button className="btn icon-menu toggle-menu-btn" type="button" onClick={this.menuHandler}></button>
                     {user && user.email ?
                         <>
                             <nav className={`main-nav${this.state.menuIsOpen ? " open" : ""}`}>
-                                <Link to="/add-studio" onClick={this.menuItemHandler} className="menu-item">{"Home"}</Link>
-                                <Link to="/messages" onClick={this.menuItemHandler} className="menu-item">{"Messages"}</Link>
+                                <Link to="/add-studio" onClick={this.menuItemHandler} className="menu-item">{generateLabels("add_studio_label")}</Link>
+                                <Link to="/messages" onClick={this.menuItemHandler} className="menu-item">{generateLabels("messages_label")}</Link>
                             </nav>
                             <div className="my-profile-menu">
                                 <Dropdown className="dropdown-block" overlay={myProfileMenu}>
@@ -162,9 +160,9 @@ class TopBar extends React.Component {
                         </>
                         :
                         <nav className={`main-nav${this.state.menuIsOpen ? " open" : ""}`}>
-                            {/* <Link onClick={this.menuItemHandler} to="/add-studio" className="menu-item">{generateLabels("add_studio_label")}</Link> */}
-                            <Link onClick={this.menuItemHandler} to="/signup" className="menu-item">{"Sign Up"}</Link>
-                            <Link onClick={this.menuItemHandler} to="/login" className="menu-item">{"Log In"}</Link>
+                            <Link onClick={this.menuItemHandler} to="/add-studio" className="menu-item">{generateLabels("add_studio_label")}</Link>
+                            <Link onClick={this.menuItemHandler} to="/signup" className="menu-item">{generateLabels("signup_label")}</Link>
+                            <Link onClick={this.menuItemHandler} to="/login" className="menu-item">{generateLabels("login_label")}</Link>
                         </nav>
                     }
                 </div>

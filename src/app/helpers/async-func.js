@@ -29,7 +29,7 @@ export default function asyncComponent(importComponent) {
             const Component = this.state.component ||
                 <main className="main-inner-wrapper">
                     <Helmet>
-                        <title>Handshake - {this.props.settings && this.props.settings.title ? this.props.settings.title : " "}  </title>
+                        <title>HandShake- {this.props.settings && this.props.settings.title ? this.props.settings.title : " "}  </title>
                     </Helmet>
                     <div className="container">
                     </div>

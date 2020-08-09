@@ -147,7 +147,7 @@ export async function registerTokens(data) {
                 // Update
                 querySnapshot.forEach(function (doc) {
                     let queryData = doc.data();
-                    if (queryData.pushToken == data.token) {
+                    if (queryData.pushToken === data.token) {
                         // console.log("Same user aade");
                         networkCollectionDocRef.doc(doc.id).update({
                             userId: data.userId,

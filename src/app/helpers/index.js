@@ -14,9 +14,9 @@ export const groupBy = (xs, key) => {
 
 
 export function gatherStaticDatalength() {
-    let data = reactLocalStorage.getObject("languageData");
+    return reactLocalStorage.getObject("languageData");
 
-    return data.length === 0 || data.length === undefined
+    // return data.length === 0 || data.length === undefined
 }
 export function generateLabels(key) {
     let data = reactLocalStorage.getObject("languageData");
@@ -90,34 +90,34 @@ export function getCurrentPosition() {
     });
 }
 
-export function getAddress(location) {
-    return new Promise(function (resolve, reject) {
-        axios({
-            url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${config.mapKey}`,
-            method: "GET",
-        })
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    });
-}
-export function getLatLong(address) {
-    return new Promise(function (resolve, reject) {
-        axios({
-            url: `https://maps.googleapis.com/maps/api/geocode/json?place_id=${address}&key=${config.mapKey}`,
-            method: "GET",
-        })
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    });
-}
+// export function getAddress(location) {
+//     return new Promise(function (resolve, reject) {
+//         axios({
+//             url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${config.mapKey}`,
+//             method: "GET",
+//         })
+//             .then(function (response) {
+//                 resolve(response.data);
+//             })
+//             .catch(function (error) {
+//                 reject(error);
+//             });
+//     });
+// }
+// export function getLatLong(address) {
+//     return new Promise(function (resolve, reject) {
+//         axios({
+//             url: `https://maps.googleapis.com/maps/api/geocode/json?place_id=${address}&key=${config.mapKey}`,
+//             method: "GET",
+//         })
+//             .then(function (response) {
+//                 resolve(response.data);
+//             })
+//             .catch(function (error) {
+//                 reject(error);
+//             });
+//     });
+// }
 
 export function getNextSunday(date) {
     date = new Date(date)

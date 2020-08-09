@@ -23,7 +23,7 @@ class Layout extends Component {
         await this.setState({ refresh: !this.state.refresh })
     }
     async componentDidMount() {
-        // await this.props.getLanguages(this.props.language)
+        await this.props.getLanguages(this.props.language)
     }
     render() {
         const { children, settings } = this.props;
@@ -34,7 +34,7 @@ class Layout extends Component {
                 <div className="app-body">
                     {children}
                 </div>
-                <Footer />
+                {settings.footer !== false && <Footer refreshComp={this.refreshComp} />}
             </React.Fragment>
         )
     }

@@ -1,57 +1,100 @@
+
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SignInForm from "./signup-form";
+import SignUpForm from "./signup-form";
 import { history } from "../../../store";
-import { Link } from "react-router-dom";
-import { generateLabels } from "../../../helpers"
+import { Col, Row } from "antd";
+// import Dialogs from "../../../components/dialog";
+// import {getUserLocation } from "../../../helpers";
 
-const mapDispatchToProps = ({ user,studio }) => {
+const mapDispatchToProps = ({ user }) => {
     return {
-        ...user,...studio
+        ...user
     };
 };
 
-const mapStateToProps = ({ user,studio }) => {
+const mapStateToProps = ({ user }) => {
     return {
-        ...user,...studio
+        ...user
     };
 };
+
 class SignUp extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            position: "",
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    async handleSubmit(user) {
-        await this.props.registerUser(user);
-        if (this.props.user && this.props.user.email)
-            history.push("/")
     }
-    componentDidMount() {
-        // this.props.onErrorWithoutNotify({message:""})
+    handleSignup = () => {
+        // history.push("/signup");
+    };
+    async handleSubmit(user) {
+        // let res = await this.props.login(user);
+        // console.log("res", this.props.user)
+        // if (this.props.user && res) {
+        //     if(this.props.user.user_type==="vendoruser"){
+        //         history.push("/dashboard")
+        //     }
+        //     else if(res.user.vendor_id) {
+        //         let vendor = await this.props.getBusiness({vendor_id: res.user.vendor_id})
+        //         if(vendor && vendor.outlet_signup_status === "Y") {
+        //             history.push("/")
+        //         }
+        //         else {
+
+        //             if(vendor && vendor.business_type === "outlet") {
+        //                 history.push("/profile-Outlet-details")
+        //             }
+        //             else if(vendor && vendor.business_type === "home") {
+        //                 history.push("/profile-homerun-business-details")
+        //             }
+        //             else{
+        //                 history.push("/profile")
+        //             }
+        //         }
+        //     }
+        //     else 
+        //         history.push("/profile")
+        // } 
+    }
+    async componentDidMount() {
+        // this.setState({
+        //     position: await getUserLocation()
+        // });
+        // await this.props.listCountries()
     }
     render() {
-
         return (
-            <div className="auth-bg">
-                <div className="auth-wrapper" elevation={4}>
-                    <div className="auth-wrapper-inner auth-wrapper-inner--signup">
-                        <h1 className="title-block">{generateLabels("signup_your_account")}</h1>
-                        <div className="auth-form-block">
-                            <SignInForm
-                                onSubmit={this.handleSubmit}
-                                loading={this.props.loading} errorMessage={this.props.errorMessage} clearMessage={this.props.clearErrorMessage}
-                            />
-                        </div>
-                        <div className="bottom-link-block">
-                            <span className="text-block">{`${generateLabels("already_have_acc")||"Already have an account"} ?`}</span>
-                            <Link to="/login" className="auth-header-logo forward-link">{generateLabels("signin")}</Link>
-                        </div>
+            <div className="auth-wrapper1">
+                <div className="auth-image">
+                    <img src="/images/banner3.png" alt="Loading..."></img>
+                </div>
+                <div className="auth-form" elevation={4}>
+                    <div className="auth-form-inner">
+                        <Row>
+                            <Col span={24}>
+                                <div className="auth-logo" onClick={()=>history.push("/")}>
+                                    <img src="/images/icon.png" alt="Loading..."></img>
+                                    <h2 style={{ padding: "6px 12px 0px 1px", color: "#932068" }}>HandShake</h2>
+                                </div>
+                                <div>
+                                    <SignUpForm
+                                        //  forgt={  this.handleOpen }
+                                        onSubmit={this.handleSubmit}
+                                        loading={this.props.loading}
+                                        errorMessage={this.props.errorMessage}
+                                        clearMessage={this.props.clearErrorMessage} />
+                                </div>
+                            </Col>
+                        </Row>
                     </div>
                 </div>
             </div>
         );
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

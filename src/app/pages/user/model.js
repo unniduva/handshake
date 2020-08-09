@@ -1,7 +1,7 @@
 import NotificationManager from "../../components/notification";
 import fcm from "../../../config/firebase"
 import * as service from "./service";
-import { setCookies, clearCookies, getCookie, updateCookie, getLanguage } from "../../helpers/utility"
+import { setCookies, clearCookies, getCookie, updateCookie } from "../../helpers/utility"
 import { FirebaseAdmin } from "../../firebase";
 export default {
     state: {
@@ -103,7 +103,7 @@ export default {
                         data.user.lastName = res.Lname;
                         data.user.imgUrl = res.imageUrl
                         await setCookies(data);
-                        // fcm.mountFcm()
+                        fcm.mountFcm()
                         this.onLoginSuccess({ user: res })
                         return data;
                     }
@@ -162,7 +162,7 @@ export default {
 
                             });
                             await setCookies(data);
-                            // fcm.mountFcm()
+                            fcm.mountFcm()
                             this.onLoginSuccess(userCredentials);
                             return userCredentials;
                         }

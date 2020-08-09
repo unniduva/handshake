@@ -33,13 +33,14 @@
     .auth-alter{
         font-size: 14px;
         font-family: $sub-font;
+        display: flex;
         a{
             cursor: pointer;
             font-weight: 500;
             text-decoration: underline;
-            color: $sub-font-color;
+            color: #932068;
             &:hover{
-                color: $default-font-color;
+                color: #932068;
             }
         }
     }
@@ -47,7 +48,7 @@
         padding-top: 20px;
         text-align: center;
         font-family: $sub-font;
-        font-size: 14px;
+        font-size: 14px !important;
         span{
             margin-right: 5px;
         }
@@ -62,3 +63,115 @@
         }
     }
 }
+
+.auth-wrapper1{
+    .auth-image{
+        display: none;
+    }
+    .auth-form{
+        padding: 24px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .auth-form-inner{
+            width: 100%;
+        }
+        .common-form{
+            .ant-form-item{
+                margin-bottom: 10px;
+            }
+        }
+    }  
+    .auth-form-inner{
+        max-width: 366px;
+        margin: 0 auto;
+    }
+    .auth-logo{
+        cursor: pointer;
+        width: 113px;
+        margin: 0 auto 20px;
+        text-align:-webkit-center;
+        // img{
+         
+        //     // width: 100%;
+        // }
+    }
+    .auth-alter{
+        font-size: 14px;
+        font-family: $sub-font;
+        display: flex;
+        a{
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: underline;
+            color: #932068;
+            &:hover{
+                color: #932068;
+            }
+        }
+    }
+    a.forgot-password{
+        font-weight: normal;
+        font-family: $sub-font; 
+        font-size: 13px;
+        text-transform: capitalize;
+        color: $default-font-color;
+        float: right;
+        &:hover{
+            // color: $secondary-color; 
+            text-decoration: underline;
+        }
+    }
+    .form-submit-btn{
+        margin-top: 10px;
+    }
+    .register{
+        text-align: center;
+        font-family: $sub-font; 
+        font-size: 14px;
+        line-height: 15px;
+        color: $default-font-color;
+        margin-top: 60px;
+        .ant-typography{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        a{
+            color: $primary-color;
+            font-weight: 500;
+            &:hover{
+                text-decoration: underline;
+                .anticon{
+                    right: -3px;
+                }
+            }
+        }
+        .anticon{
+            font-size: 10px;
+            position: relative;
+            right: 0;
+            // @include transition(all 0.3s ease); 
+        }
+    }
+    @include min-md{
+        display: flex;
+        .auth-image{
+            display: block;
+            width: 50%;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            left: 0;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .auth-form{
+            width: 50%;
+        }
+    }
+} 
+

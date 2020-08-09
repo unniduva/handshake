@@ -53,6 +53,12 @@ export default {
                 language: data
             };
         },
+        setCurrLanguage(state, data) {
+            return {
+                ...state,
+                language: data, loading: false
+            };
+        },
         onSetCurrLoc(state, data) {
             return { ...state, currUsrLoc: data }
         },
@@ -72,15 +78,17 @@ export default {
                 this.onError(e);
             }
         },
-   
+
         async getLanguages(payload = "eng", rootState) {
+            this.onRequest()
             var res = await service.getStaticData()
             setlanguageData(res)
             console.log("AT MODEL STUDIO", payload)
             setLanguage(payload)
+            this.setCurrLanguage(payload)
             return
         },
-        
+
         async clearStore(payload, rootState) {
             this.onClearStore()
             return

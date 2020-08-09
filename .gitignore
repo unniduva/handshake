@@ -5,3 +5,13 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+build/
+tmp/
+#
+*
+!.firebase
+*
+!gitignore
+.firebase/hosting.YnVpbGQ.cache
+build/asset-manifest.json
+build/index.html

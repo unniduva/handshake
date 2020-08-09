@@ -78,7 +78,6 @@
     "nightwatch-api": "^3.0.1",
     "node-sass": "^4.13.0",
     "npm-run-all": "^4.1.5",
-    "pre-commit": "^1.2.2",
     "react-scripts": "^3.3.0",
     "react-test-renderer": "^16.12.0",
     "regenerator-runtime": "^0.13.3",

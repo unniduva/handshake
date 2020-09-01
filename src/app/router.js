@@ -109,6 +109,15 @@ export default class extends Component {
                         component={asyncComponent(() => import("./pages/home"))}
                     />
 
+                    <RestrictedRoute
+                        exact
+                        path={"/home"}
+                        layoutSettings={{
+                            title: "home", topbar: true, footer: false
+
+                        }}
+                        component={asyncComponent(() => import("./pages/pawcialize/pages/home"))}
+                    />
                     {/* <PublicRoute
                         exact
                         path={"/about"}

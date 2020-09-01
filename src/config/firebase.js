@@ -1,26 +1,22 @@
 // import * as firebase from "firebase/app";
 import "firebase/messaging";
-import { registerTokens, deletePushToken } from "../app/pages/user/service"
 import { updateCookie, getCookie } from "../app/helpers/utility"
-import NotificationManager from "../app/components/notification";
-import config from ".";
-import { normalizeEmail } from "../app/helpers";
+import config from "./index";
 import { FirebaseAdmin } from "../app/firebase";
 import firebase from "firebase/app"
-// const initializedFirebaseApp = firebase.initializeApp({
-//   messagingSenderId: "362502497032"
-// });
+import { store } from "../app/store"
+import { normalizeEmail } from "../app/helpers";
+
 var messaging = null
-console.log(firebase.messaging.isSupported(),"=================")
 if (firebase.messaging.isSupported()) {
-  // messaging = FirebaseAdmin.messaging();
-  // messaging.usePublicVapidKey(
-  //   config.usePublicVapidKey
-  // );
+  messaging = FirebaseAdmin.messaging();
+  messaging.usePublicVapidKey(
+    config.usePublicVapidKey
+  );
 }
 export default class fcm {
   static async deleteFcmToken() {
-    const data = await messaging.getToken();
+    await messaging.getToken();
     // deleteToken(data);
   }
   static mountFcm() {
@@ -31,26 +27,33 @@ export default class fcm {
         let cookie = await getCookie();
         const oldToken = cookie.fcm;
         if (oldToken && token !== oldToken) {
-          let data = { token: oldToken }
-          deletePushToken(data);
+          // let data = { token: oldToken }
+          store.dispatch.user.deletePushToken({ "device_id": token });
         }
         if (cookie && cookie.email)
-          registerTokens({ token, userId: normalizeEmail(cookie.email) });
-        let data = { fcm: token }
+          store.dispatch.user.updateToken({
+            "device_id": token, user_id: normalizeEmail(cookie.email),
+            "device_type": "web",
+          });
+        var data = { fcm: token }
         updateCookie(data);
       })
       .catch(function (err) {
         console.log("Unable to get permission to notify.", err);
       });
     navigator.serviceWorker.addEventListener("message", async (message) => {
-      NotificationManager.success(`${message.data["firebase-messaging-msg-data"].notification.body}`)
+      console.log(message, "======")
+      // const title = payload.notification.title;
+      // const options = {
+      //     body: payload.notification.body,
+      //     icon: "images/favicon.png"
+      // }
+      // new Notification(title, options);
+      // NotificationManager.success(`${"KOOOOOIIII Firebase message recieved"}`)
     });
   }
+
 }
-
-
-
-
 
 
 

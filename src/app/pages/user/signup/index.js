@@ -33,6 +33,11 @@ class SignUp extends Component {
         // history.push("/signup");
     };
     async handleSubmit(user) {
+        await this.props.registerUser(user);
+        if (this.props.user && this.props.user.email)
+            history.push("/")
+    }
+    // async handleSubmit(user) {
         // let res = await this.props.login(user);
         // console.log("res", this.props.user)
         // if (this.props.user && res) {
@@ -60,7 +65,7 @@ class SignUp extends Component {
         //     else 
         //         history.push("/profile")
         // } 
-    }
+    // }
     async componentDidMount() {
         // this.setState({
         //     position: await getUserLocation()

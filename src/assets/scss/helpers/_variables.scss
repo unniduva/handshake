@@ -7,8 +7,9 @@ $Poppins                : 'Poppins', sans-serif;
 
 //base colors   
 $primary-color          : #932068 !default;  
+$secondary-color        : #730103 !default;  
 
-//text colors
+//text colorsdefault-font-color
 $default-font-color     : #4A4A4A !default;
 $sub-font-color         : rgba(#4A4A4A, .7) !default;
 $title-font-color       : #000000 !default; 
@@ -25,6 +26,7 @@ $title-font             : $Poppins !default;
 $sub-font               : $Roboto !default; 
 $paragraph              : $Roboto !default; 
 $icon-font              : 'StudioRentIcons' !default; 
+$icons                  : 'icomoon'; 
 
 //background color
 $bg-color               : #ffffff !default; 
@@ -34,3 +36,10 @@ $bg-dark                : #F9F0EF !default;
 $radius                 : 4px !default;
 $radius-large           : 5px !default;
 $radius-small           : 3px !default; 
+
+$header-bg              : #FF5765 !default;
+$error-color            : #f5222d !default;
+$success-color          : #09B55A !default;
+$warning-color          : #ffecb8 !default;
+
+$radius-extra-large     : 8px !default; 

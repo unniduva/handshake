@@ -102,7 +102,7 @@ class TopBar extends React.Component {
                     </div>
                 </div>
                 <Link to="/my-profile" className="menu-item">{generateLabels("my_profile")}</Link>
-                <Link to="/my-studios" className="menu-item">{generateLabels("my_studios")}</Link>
+                {/* <Link to="/my-studios" className="menu-item">{generateLabels("my_studios")}</Link> */}
                 {/* <Link to="/settings" className="menu-item">{generateLabels("settings")}</Link> */}
                 <Link to="/notifications" className="menu-item">{generateLabels("notifications")}</Link>
                 {/* <Link to="/help" className="menu-item">{generateLabels("help")}</Link> */}
@@ -130,7 +130,7 @@ class TopBar extends React.Component {
 
                 </div>
                 <div className="right-block">
-                    <Select value={this.state.lang} onChange={data => this.handleLangChange(data)} className="language-select" dropdownClassName="language-dropdown">
+                    {/* <Select value={this.state.lang} onChange={data => this.handleLangChange(data)} className="language-select" dropdownClassName="language-dropdown">
                         <Option value="eng">
                             <span className="full-name">English</span>
                             <span className="short-name">Eng</span>
@@ -139,14 +139,15 @@ class TopBar extends React.Component {
                             <span className="full-name">Swedish</span>
                             <span className="short-name">Swd</span>
                         </Option>
-                    </Select>
+                    </Select> */}
                     <button className="btn icon-search toggle-search-btn" type="button" onClick={this.searchHandler}></button>
                     <button className="btn icon-menu toggle-menu-btn" type="button" onClick={this.menuHandler}></button>
                     {user && user.email ?
                         <>
                             <nav className={`main-nav${this.state.menuIsOpen ? " open" : ""}`}>
-                                <Link to="/add-studio" onClick={this.menuItemHandler} className="menu-item">{generateLabels("add_studio_label")}</Link>
-                                <Link to="/messages" onClick={this.menuItemHandler} className="menu-item">{generateLabels("messages_label")}</Link>
+                                <Link to="/home" onClick={this.menuItemHandler} className="menu-item">{generateLabels("") || "Add your charity"}</Link>
+                                <Link to="/home" onClick={this.menuItemHandler} className="menu-item">{generateLabels("add_studio_label") || "Settings"}</Link>
+
                             </nav>
                             <div className="my-profile-menu">
                                 <Dropdown className="dropdown-block" overlay={myProfileMenu}>

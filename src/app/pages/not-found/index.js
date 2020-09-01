@@ -11,7 +11,7 @@ class NotFound extends Component {
                         status="404"
                         title="404"
                         subTitle="Sorry, the page you visited does not exist."
-                        extra={<Button onClick={() => history.push("/")} className="secondary-btn">Back Home</Button>}
+                        extra={<Button onClick={() => history.push("/home")} className="secondary-btn">Back Home</Button>}
                     />
                 </div>
             </main>

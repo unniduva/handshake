@@ -98,6 +98,12 @@ class Login extends Component {
         // history.push("/signup");
     };
     async handleSubmit(user) {
+
+        await this.props.login(user).then(res => {
+            if (res && res.accessToken) history.push("/home")
+            console.log("res======", res)
+        })
+
         // let res = await this.props.login(user);
         // console.log("res", this.props.user)
         // if (this.props.user && res) {
@@ -142,7 +148,7 @@ class Login extends Component {
                     <div className="auth-form-inner">
                         <Row>
                             <Col span={24}>
-                                <div className="auth-logo" onClick={()=>history.push("/")}>
+                                <div className="auth-logo" onClick={() => history.push("/")}>
                                     <img src="/images/icon.png" alt="Loading..."></img>
                                     <h2 style={{ padding: "6px 12px 0px 1px", color: "#932068" }}>HandShake</h2>
                                 </div>

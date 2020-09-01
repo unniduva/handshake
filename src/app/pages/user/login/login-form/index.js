@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
-import { generateLabels } from "../../../../helpers"
+import { generateLabels, getUserLocation, getCurrentPosition } from "../../../../helpers"
 import { Link } from "react-router-dom";
 const FormItem = Form.Item;
 
@@ -35,7 +35,19 @@ class LoginForm extends Component {
                     });
                 }
                 else {
-                    await this.props.onSubmit(values);
+                    let device = await getUserLocation()
+                    await this.props.onSubmit({
+                        ...values, last_loggined: {
+                            last_loggined_date: new Date(), device_detalis: {
+                                app: window.navigator.appVersion, vendor: window.navigator.vendor,
+                                ip: device.ip, platform: window.navigator.platform, country_code: device.country,
+                                city: device.city, location: { latitude: device.latitude, longitude: device.longitude },
+                                org: device.org,
+                                postal: device.postal,
+                                region: device.region
+                            }
+                        }
+                    });
                     await this.setState({ loading: false })
                 }
             }
@@ -75,7 +87,7 @@ class LoginForm extends Component {
                 </FormItem>
                 <FormItem >
                     <div className="auth-alter">
-                        <p style={{ fontSize: 14,marginLeft:"20%" }} className="bottom-link-block">Don't have an account? </p>&nbsp;
+                        <p style={{ fontSize: 14, marginLeft: "20%" }} className="bottom-link-block">Don't have an account? </p>&nbsp;
                         <Link to="/signup">{`${generateLabels("")}SignUp`}</Link>
                     </div>
                 </FormItem>

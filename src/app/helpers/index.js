@@ -141,3 +141,18 @@ export function getNearestSaturday(date) {
 export function normalizeEmail(email) {
     return email.replace(/[^\w\s]/gi, "");
 }
+
+export function getUserLocation() {
+    return new Promise(function (resolve, reject) {
+        axios({
+            url: "https://ipapi.co/json/",
+            method: "GET",
+        })
+            .then(function (response) {
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
+}

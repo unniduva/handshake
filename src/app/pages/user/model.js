@@ -1,8 +1,9 @@
 import NotificationManager from "../../components/notification";
 import fcm from "../../../config/firebase"
 import * as service from "./service";
-import { setCookies, clearCookies, getCookie, updateCookie, getLanguage } from "../../helpers/utility"
+import { setCookies, clearCookies, getCookie, updateCookie } from "../../helpers/utility"
 import { FirebaseAdmin } from "../../firebase";
+import { history } from "../../store"
 export default {
     state: {
         user: getCookie() || {},
@@ -90,29 +91,35 @@ export default {
                     name: user.Fname + user.Lname ? user.Lname : "",
                 };
 
-                let unsubscribe = await FirebaseAdmin.auth().onAuthStateChanged(async user => {
-                    if (user) {
-                        console.log(user, "----")
-                        data.accessToken = await user.getIdToken(true);
-                        data.refreshToken = user.refreshToken;
-                        res = await service.getUser(payload.email)
-                        console.log("hey user ====", res);
-                        res.Dob = res && res.Dob && res.Dob.toDate()
-                        data.user.Dob = res.Dob
-                        data.user.firstName = res.Fname;
-                        data.user.lastName = res.Lname;
-                        data.user.imgUrl = res.imageUrl
-                        await setCookies(data);
-                        // fcm.mountFcm()
-                        this.onLoginSuccess({ user: res })
-                        return data;
-                    }
-                });
-                await unsubscribe();
-                return
+                return new Promise(async (resolve, reject) => {
+                    await FirebaseAdmin.auth().onAuthStateChanged(async user => {
+                        if (user) {
+                            console.log(user, "----")
+                            data.accessToken = await user.getIdToken(true);
+                            data.refreshToken = user.refreshToken;
+                            res = await service.getUser(payload.email)
+                            if (!res) reject()
+                            delete payload.password
+                            await service.updateProfile(payload)
+                            console.log("hey user ====", res);
+                            res.Dob = res && res.Dob && res.Dob.toDate()
+                            data.user.Dob = res.Dob
+                            data.user.firstName = res.Fname;
+                            data.user.lastName = res.Lname;
+                            data.user.imgUrl = res.imageUrl
+                            await setCookies(data);
+                            fcm.mountFcm()
+                            this.onLoginSuccess({ user: res })
+                            resolve(data);
+                        }
+                        else reject()
+                    });
+                })
+                // await unsubscribe();
+                // return user
 
             } catch (e) {
-                e.message = "Invalid credentials";
+                e.message = e.message ? e.message : "Invalid credentials";
                 this.onError(e);
             }
         },
@@ -140,6 +147,7 @@ export default {
                     .createUserWithEmailAndPassword(payload.email, payload.password)
                     .then(async userCredentials => {
                         delete payload.password
+                        delete payload.cofirmpassword
                         // userCredentials.user
                         //     .sendEmailVerification()
                         //     .then(data => {
@@ -150,9 +158,7 @@ export default {
                             var data = {
                                 user: {
                                     email: payload.email,
-                                    Dob: payload.Dob,
-                                    firstName: payload.Fname,
-                                    lastName: payload.Lname
+                                    name: payload.name
                                 }
                             }
                             await FirebaseAdmin.auth().onAuthStateChanged(async user => {
@@ -162,7 +168,7 @@ export default {
 
                             });
                             await setCookies(data);
-                            // fcm.mountFcm()
+                            fcm.mountFcm()
                             this.onLoginSuccess(userCredentials);
                             return userCredentials;
                         }
@@ -251,8 +257,8 @@ export default {
                 this.onError(er)
             }
         },
-        async updateRating(data) {
-            await service.updateRating(data)
+        async updateToken(data) {
+            await service.updateToken(data)
             return
         }
     }

@@ -13,13 +13,13 @@ const RestrictedRoute = ({ component: Component, layoutSettings = {}, ...rest })
                     <Component {...props} settings={layoutSettings} />
                 </Layout>
             ) : (
-                <Redirect
-                    to={{
-                        pathname: "/login",
-                        state: { from: props.location }
-                    }}
-                />
-            )
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: props.location }
+                        }}
+                    />
+                )
         }
     />
 );
@@ -33,13 +33,13 @@ const UnRestrictedRoute = ({ component: Component, layoutSettings = {}, ...rest 
                     <Component {...props} settings={layoutSettings} />
                 </Layout>
             ) : (
-                <Redirect
-                    to={{
-                        pathname: "/",
-                        state: { from: props.location }
-                    }}
-                />
-            )
+                    <Redirect
+                        to={{
+                            pathname: "/",
+                            state: { from: props.location }
+                        }}
+                    />
+                )
         }
     />
 );
@@ -68,7 +68,7 @@ export default class extends Component {
                         exact
                         path={"/login"}
                         layoutSettings={{
-                            title: "Login", topbar: true,
+                            title: "Login", topbar: false, footer: false
 
                         }}
                         component={asyncComponent(() => import("./pages/user/login"))}
@@ -77,7 +77,7 @@ export default class extends Component {
                         exact
                         path={"/signup"}
                         layoutSettings={{
-                            title: "Signin", topbar: true,
+                            title: "Signin", topbar: false, footer: false
 
                         }}
                         component={asyncComponent(() => import("./pages/user/signup"))}
@@ -94,7 +94,7 @@ export default class extends Component {
                         exact
                         path={"/reset-password"}
                         layoutSettings={{
-                            title: "Reset password", topbar: true,
+                            title: "Reset password", topbar: false, footer: false
                         }}
                         component={asyncComponent(() => import("./pages/user/reset"))}
                     />
@@ -108,49 +108,104 @@ export default class extends Component {
                         }}
                         component={asyncComponent(() => import("./pages/home"))}
                     />
-                    
+
                     <RestrictedRoute
                         exact
-                        path={"/warningDetail/:id?"}
+                        path={"/home"}
                         layoutSettings={{
-                            title: "Warning detail",
-                            topbar: true,
-                            sidebar: false
+                            title: "home", topbar: true, footer: false
+
                         }}
-                        component={asyncComponent(() => import("./components/notification/detail"))}
+                        component={asyncComponent(() => import("./pages/pawcialize/pages/home"))}
                     />
-                   
-                    <RestrictedRoute
+                    {/* <PublicRoute
                         exact
-                        path={"/my-profile"}
-                        layoutSettings={{
-                            title: "My Profile",
-                            topbar: true,
-                            sidebar: false
-                        }}
-                        component={asyncComponent(() => import("./pages/user/my-profile"))}
-                    />
-                    <RestrictedRoute
-                        exact
-                        path={"/notifications"}
-                        layoutSettings={{
-                            title: "Notifications",
-                            topbar: true,
-                            sidebar: false
-                        }}
-                        component={asyncComponent(() => import("./components/notification/index"))}
-                    />
-                    <PublicRoute
-                        exact
-                        path={"/cms/:type?"}
+                        path={"/about"}
                         layoutSettings={{
                             title: "",
+                            type: "about",
                             topbar: true,
                             sidebar: false
                         }}
                         component={asyncComponent(() => import("./components/staticpages"))}
                     />
-                    
+                    <PublicRoute
+                        exact
+                        path={"/contact"}
+                        layoutSettings={{
+                            title: "",
+                            type: "contact",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/privacy"}
+                        layoutSettings={{
+                            title: "",
+                            type: "privacy",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/terms"}
+                        layoutSettings={{
+                            title: "",
+                            type: "terms",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/howitworks"}
+                        layoutSettings={{
+                            title: "",
+                            type: "howitworks",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/studiofees"}
+                        layoutSettings={{
+                            title: "",
+                            type: "studiofees",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/trustandsafety"}
+                        layoutSettings={{
+                            title: "",
+                            type: "trustandsafety",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    />
+                    <PublicRoute
+                        exact
+                        path={"/faq"}
+                        layoutSettings={{
+                            title: "",
+                            type: "faq",
+                            topbar: true,
+                            sidebar: false
+                        }}
+                        component={asyncComponent(() => import("./components/staticpages"))}
+                    /> */}
                     <Route
                         component={asyncComponent(() => import("./pages/not-found"))}
                     />

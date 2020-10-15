@@ -50,11 +50,7 @@ export async function updateProfile(payload) {
     //     Fname: payload.fname,
     //     Lname: payload.lname
     // }))
-    return docRef.update({
-        Dob: payload.dob,
-        Fname: payload.fname,
-        Lname: payload.lname
-    }).then(res => { return payload }).catch(e => { throw e })
+    return docRef.update(payload).then(res => { return payload }).catch(e => { throw e })
     // return;
 
     // return await db.collection("users").doc(normalizeEmail(payload.email)).update({
@@ -128,17 +124,17 @@ export async function getRating(data) {
         .then(res => (res.data()))
 }
 
-export async function registerTokens(data) {
+export async function updateToken(data) {
     const networkCollectionDocRef = db.collection("devices")
 
     networkCollectionDocRef
-        .where("pushToken", "==", data.token)
+        .where("device_id", "==", data.device_id)
         .get()
         .then(querySnapshot => {
             if (querySnapshot.empty) {
                 networkCollectionDocRef.add({
-                    userId: data.userId,
-                    pushToken: data.token,
+                    user_id: data.user_id,
+                    device_id: data.device_id,
                     createdAt: moment()
                         .utc()
                         .toDate()
@@ -147,10 +143,10 @@ export async function registerTokens(data) {
                 // Update
                 querySnapshot.forEach(function (doc) {
                     let queryData = doc.data();
-                    if (queryData.pushToken == data.token) {
+                    if (queryData.device_id === data.device_id) {
                         // console.log("Same user aade");
                         networkCollectionDocRef.doc(doc.id).update({
-                            userId: data.userId,
+                            user_id: data.user_id,
                             platform: "Browser",
                             createdAt: moment()
                                 .utc()

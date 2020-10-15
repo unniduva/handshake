@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Social from "../social";
 import { generateLabels } from "../../helpers";
 export default class Footer extends Component {
@@ -13,43 +13,43 @@ export default class Footer extends Component {
                     <Row type="flex" gutter={24}>
                         <Col xs={12} sm={12} md={5} lg={4}>
                             <h3 className="title-block uppercase">{generateLabels("company")}</h3>
-                            {/* <ul className="menu-list">
-                                <li>
+                            <ul className="menu-list">
+                                {/* <li>
                                     <Link to="/">{generateLabels("home")}</Link>
+                                </li> */}
+                                <li>
+                                    <Link to="/about">{generateLabels("about")}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/cms/about">{generateLabels("about")}</Link>
+                                    <Link to="/contact">{generateLabels("contact")}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/cms/contact">{generateLabels("contact")}</Link>
+                                    <Link to="/privacy">{generateLabels("privacy")}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/cms/privacy">{generateLabels("privacy")}</Link>
+                                    <Link to="/terms">{generateLabels("terms")}</Link>
                                 </li>
-                                <li>
-                                    <Link to="/cms/terms">{generateLabels("terms")}</Link>
-                                </li>
-                            </ul> */}
+                            </ul>
                         </Col>
                         <Col xs={12} sm={12} md={5} lg={4}>
                             <h3 className="title-block uppercase">{generateLabels("learn_more")}</h3>
-                            {/* <ul className="menu-list">
+                            <ul className="menu-list">
                                 <li>
-                                    <Link to="/cms/howitworks">{generateLabels("how_it_works")}</Link>
+                                    <Link to="/howitworks">{generateLabels("how_it_works")}</Link>
+                                </li>
+                                {/* <li>
+                                    <Link to="/studiofees">{generateLabels("studio_fees")}</Link>
+                                </li> */}
+                                <li>
+                                    <Link to="/trustandsafety">{generateLabels("trust_and_safety")}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/cms/studiofees">{generateLabels("studio_fees")}</Link>
+                                    <Link to="/faq">{`FAQ- ${generateLabels("help")}`}</Link>
                                 </li>
-                                <li>
-                                    <Link to="/cms/trustandsafety">{generateLabels("trust_and_safety")}</Link>
-                                </li>
-                                <li>
-                                    <Link to="/cms/faq">FAQ</Link>
-                                </li>
-                                <li>
-                                    <Link to="/cms/help">{generateLabels("help")}</Link>
-                                </li>
-                            </ul> */}
+                                {/* <li>
+                                    <Link to="/help">{generateLabels("help")}</Link>
+                                </li> */}
+                            </ul>
                         </Col>
                         {/* <Col xs={24} sm={12} md={14} lg={12}>
                             <h3 className="title-block uppercase">{generateLabels("top_cities")}</h3>
@@ -113,14 +113,14 @@ export default class Footer extends Component {
                                 </Col>
                             </Row>
                         </Col> */}
-
+                        <Col xs={24} sm={24} lg={4}>
+                            <h3 className="title-block uppercase">Social</h3>
+                            <Social />
+                        </Col>
                     </Row>
-                    <Col>
-                        <h3 className="title-block uppercase">Social</h3>
-                        <Social />
-                    </Col>
-                    <div className="copy-right-block">&copy; VAUT {moment().format("YYYY")}</div>
-                    <small className="copy-right-block">All Rights Reserved under VAUT Technologies</small>
+                    <div className="copy-right-block">
+                        <a target="_blank" href="https://vaut-enterprises.web.app/">   &copy; VAUT Technologies {moment().format("YYYY")}</a>
+                    </div>
                 </div>
             </footer>
         );

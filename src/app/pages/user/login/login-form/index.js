@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
-import { generateLabels } from "../../../../helpers"
+import { generateLabels, getUserLocation, getCurrentPosition } from "../../../../helpers"
 import { Link } from "react-router-dom";
 const FormItem = Form.Item;
 
@@ -35,7 +35,19 @@ class LoginForm extends Component {
                     });
                 }
                 else {
-                    await this.props.onSubmit(values);
+                    let device = await getUserLocation()
+                    await this.props.onSubmit({
+                        ...values, last_loggined: {
+                            last_loggined_date: new Date(), device_detalis: {
+                                app: window.navigator.appVersion, vendor: window.navigator.vendor,
+                                ip: device.ip, platform: window.navigator.platform, country_code: device.country,
+                                city: device.city, location: { latitude: device.latitude, longitude: device.longitude },
+                                org: device.org,
+                                postal: device.postal,
+                                region: device.region
+                            }
+                        }
+                    });
                     await this.setState({ loading: false })
                 }
             }
@@ -49,28 +61,35 @@ class LoginForm extends Component {
         console.log(this.state.loading, "popopoopoopoppopoopopopoopop")
         const { getFieldDecorator } = this.props.form;
         return (
-            <Form className="basic-form" onSubmit={()=>this.handleSubmit}>
-                <FormItem label={generateLabels("username") || "User name"}>
+            <Form className="basic-form" onSubmit={this.handleSubmit}>
+                <FormItem label={generateLabels("username")}>
                     {getFieldDecorator("email", {
                         rules: [{ required: true, message: generateLabels("v_email") },],
                     })(
                         <Input placeholder={generateLabels("p_username") || "Please enter email ID"} type="text" name="loginMail" />
                     )}
                 </FormItem>
-                <FormItem label={generateLabels("password") || "Password"}>
+                <FormItem label={generateLabels("password")}>
                     {getFieldDecorator("password", {
                         rules: [{ required: true, message: generateLabels("v_password") }],
                     })(
                         <Input.Password type={this.state.type} placeholder={generateLabels("p_password") || "Please enter your password"} id="loginPassword" autoComplete="loginPassword" />
                     )}
                 </FormItem>
-                <FormItem className="mb-3x">
+                <FormItem >
                     <div className="auth-alter">
-                        <Link to="/forgot-password">{`${generateLabels("forgot_password") || "forgot password"} ?`}</Link>
+                        <Link to="/forgot-password">{`${generateLabels("forgot_password")} ?`}</Link>
                     </div>
+
                 </FormItem>
                 <FormItem>
-                    <Button style={{background:"#FF69B4"}} id="login" disabled={this.state.loading} loading={this.state.loading} htmlType="submit" type="primary" className="submit-btn btn-has-icon uppercase btn-width-full">{generateLabels("signin")||"Log In"}</Button>
+                    <Button id="login" disabled={this.state.loading} loading={this.state.loading} htmlType="submit" type="primary" className="submit-btn btn-has-icon uppercase btn-width-full">{generateLabels("signin")}</Button>
+                </FormItem>
+                <FormItem >
+                    <div className="auth-alter">
+                        <p style={{ fontSize: 14, marginLeft: "20%" }} className="bottom-link-block">Don't have an account? </p>&nbsp;
+                        <Link to="/signup">{`${generateLabels("")}SignUp`}</Link>
+                    </div>
                 </FormItem>
             </Form>
         );

@@ -119,7 +119,7 @@ export default {
                 // return user
 
             } catch (e) {
-                e.message = "Invalid credentials";
+                e.message = e.message ? e.message : "Invalid credentials";
                 this.onError(e);
             }
         },

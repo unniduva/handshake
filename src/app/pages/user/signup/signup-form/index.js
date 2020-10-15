@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
-import { generateLabels } from "../../../../helpers"
+import { generateLabels, getUserLocation } from "../../../../helpers"
 import { Link } from "react-router-dom";
 const FormItem = Form.Item;
 
@@ -35,7 +35,20 @@ class SignUpForm extends Component {
                     });
                 }
                 else {
-                    await this.props.onSubmit(values);
+                    var device = await getUserLocation()
+                    await this.props.onSubmit({
+                        ...values, active: true,
+                        last_loggined: {
+                            last_loggined_date: new Date(), device_detalis: {
+                                app: window.navigator.appVersion, vendor: window.navigator.vendor,
+                                ip: device.ip, platform: window.navigator.platform, country_code: device.country,
+                                city: device.city, location: { latitude: device.latitude, longitude: device.longitude },
+                                org: device.org,
+                                postal: device.postal,
+                                region: device.region
+                            }
+                        }
+                    });
                     await this.setState({ loading: false })
                 }
             }
